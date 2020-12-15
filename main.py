@@ -11,11 +11,15 @@ async def root():
 
 
 @app.post("/input")
-def read_data(device_id: str, values = None):
+def read_data(device_id: str, temp = None, humid = None, light = None,):
     # data = request.data  # data is empty
 
     print(device_id)
-    print(values)
+    print(temp)
+    print(humid)
+    print(light)
+    
+
 
     return("received")
 
