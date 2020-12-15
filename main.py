@@ -18,7 +18,7 @@ def read_data(device_id: str, temp = None, humid = None, light = None,):
     print(temp)
     print(humid)
     print(light)
-    
+
 
 
     return("received")
