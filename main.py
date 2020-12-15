@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Header
 import uvicorn
+from config import local_ip
 import sqlalchemy
 
 app = FastAPI()
@@ -21,4 +22,4 @@ def read_data(device_id: str, values = None):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="192.168.1.2", port=8000)
+    uvicorn.run(app, host=local_ip, port=8000)
