@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Header
 import uvicorn
+import sqlalchemy
 
 app = FastAPI()
 
@@ -7,15 +8,15 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-# @app.route('/')
-# def hello_world():
-#     return 'Oh hell World!'
-
 
 @app.post("/input")
-def input(data):
+def read_data(device_id: str, values = None):
     # data = request.data  # data is empty
-    print(Header(data))
+
+    print(device_id)
+    print(values)
+
+    return("received")
 
 
 
