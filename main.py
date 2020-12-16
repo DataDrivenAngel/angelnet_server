@@ -25,7 +25,7 @@ def read_data(device_id: str, temp=float, humid=float, light=float, ):
                         """
     try:
         db.query(insert_statement)
-    else:
+    except:
         pass
     return ("received")
 
