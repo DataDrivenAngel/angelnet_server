@@ -18,21 +18,21 @@ async def root():
     return {"message": "Oh Hell World"}
 
 
-@app.post("/input")
-def read_data(device_id: str, temp=float, humid=float, light=float ):
-
-    db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
-    table = "raw_data"
-    local_received_time = datetime.datetime.utcnow()
-
-    insert_statement = f"""INSERT INTO {table} (device_id,temp,humidity,light,timestamp_on_write)
-                        VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');                    
-                        """
-    try:
-        db.query(insert_statement)
-    except:
-        pass
-    return ("received")
+# @app.post("/input")
+# def read_data(device_id: str, temp=float, humid=float, light=float ):
+#
+#     db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
+#     table = "raw_data"
+#     local_received_time = datetime.datetime.utcnow()
+#
+#     insert_statement = f"""INSERT INTO {table} (device_id,temp,humidity,light,timestamp_on_write)
+#                         VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');
+#                         """
+#     try:
+#         db.query(insert_statement)
+#     except:
+#         pass
+#     return ("received")
 
 
 # @app.get("/test")
