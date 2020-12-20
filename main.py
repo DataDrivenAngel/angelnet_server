@@ -7,6 +7,12 @@ from pg import DB
 
 app = fastapi.FastAPI()
 
+try:
+    db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
+
+except:
+    print("db error")
+
 
 @app.get("/")
 async def root():
