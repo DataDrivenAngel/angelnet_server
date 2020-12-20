@@ -3,7 +3,7 @@ import uvicorn
 from config import local_ip, dbname, dbuser, dbpassword, dbhost, dbport
 import datetime
 from pg import DB
-from typing import optional
+from typing import Optional
 
 app = fastapi.FastAPI()
 
