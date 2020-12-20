@@ -3,7 +3,7 @@ import uvicorn
 from config import local_ip, dbname, dbuser, dbpassword, dbhost, dbport
 import datetime
 from pg import DB
-
+from typing import optional
 
 app = fastapi.FastAPI()
 
@@ -18,7 +18,7 @@ async def root():
     return {"message": "Oh Hell World"}
 
 @app.post("/input")
-def read_data(device_id: str, temp: float, humid: float, light: float):
+def read_data(device_id: str, temp: Optional[float], humid: Optional[float], light: Optional[float]):
 
     db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
     table = "raw_data"
