@@ -55,8 +55,9 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
         http_req = urllib2.Request(streaming_url, body)
         response = urllib2.urlopen(http_req)
         print("Response: HTTP {0} {1}\n".format(response.getcode(), response.read()))
+        print("Response: HTTP {0} {1}\n".format(response.getcode(), response.read()))
     except:
-        pass
+        print("PBI ERROR")
     return ("received")
 
 
