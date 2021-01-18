@@ -28,7 +28,7 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
     db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
     table = "raw_data"
     local_received_time = datetime.datetime.utcnow()
-py
+
     insert_statement = f"""INSERT INTO {table} (device_id,temp,humidity,light,timestamp_on_write)
                         VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');
                         """
