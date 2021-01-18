@@ -32,11 +32,14 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
     insert_statement = f"""INSERT INTO {table} (device_id,temp,humidity,light,timestamp_on_write)
                         VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');
                         """
+
     # Write to PGDB
     try:
         db.query(insert_statement)
     except:
         pass
+
+    
     # Push to Power BI
     try:
         payload =  
