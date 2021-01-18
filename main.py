@@ -4,9 +4,14 @@ from config import local_ip, dbname, dbuser, dbpassword, dbhost, dbport
 import datetime
 from pg import DB
 from typing import Optional
+import urllib.request as urllib2
+import json
+
+
 
 app = fastapi.FastAPI()
 
+# connect to DB
 try:
     db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
 except:
@@ -27,11 +32,30 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
     insert_statement = f"""INSERT INTO {table} (device_id,temp,humidity,light,timestamp_on_write)
                         VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');
                         """
+    # Write to PGDB
     try:
         db.query(insert_statement)
     except:
         pass
-    return ("received")
+    # Push to Power BI
+    try:
+        payload =  
+            f"""
+            [{{
+                "DateTime" :"{local_received_time}",
+                "Temperature" :{temp},
+                "Humidity" :{humid},
+                "Brightness" :{light},
+                "Device" :"{device_id}"
+            }}]
+            """
+        body = bytes(payload, encoding='utf-8')
+        req = urllib2.Request(streaming_url, body)
+        response = urllib2.urlopen(req)
+
+    except:
+        pass
+return ("received")
 
 
 # @app.get("/test")
