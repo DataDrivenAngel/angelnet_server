@@ -57,6 +57,8 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
         print("POST request to Power BI with data:{0}".format(body))
         print("Response: HTTP {0} {1}\n".format(response.getcode(), response.read()))
     except:
+        print("POST request to Power BI with data:{0}".format(body))
+        print("Response: HTTP {0} {1}\n".format(response.getcode(), response.read()))
         print("PBI ERROR")
     return ("received")
 
