@@ -50,8 +50,8 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
             }}]
             """
         body = bytes(payload, encoding='utf-8')
-        req = urllib2.Request(streaming_url, body)
-        response = urllib2.urlopen(req)
+        http_req = urllib2.Request(streaming_url, body)
+        response = urllib2.urlopen(http_req)
 
     except:
         pass
