@@ -6,6 +6,7 @@ from pg import DB
 from typing import Optional
 import urllib.request as urllib2
 import json
+
 from prometheus_fastapi_instrumentator import Instrumentator
 
 app = fastapi.FastAPI()
@@ -16,7 +17,6 @@ try:
     db = DB(dbname=dbname, host=dbhost, port=dbport, user=dbuser, passwd=dbpassword)
 except:
     print("db error")
-
 
 @app.get("/")
 async def root():
@@ -39,7 +39,6 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
     except:
         pass
 
-
     # Push to Power BI
     try:
         payload = f"""
@@ -51,15 +50,13 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
                 "Device" :"{device_id}"
             }}]
             """
+
         body = bytes(payload, encoding='utf-8')
         http_req = urllib2.Request(streaming_url, body)
         response = urllib2.urlopen(http_req)
-
     except:
         print("Power BI ERROR")
     return ("received")
-
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host = local_ip, port=8000)
