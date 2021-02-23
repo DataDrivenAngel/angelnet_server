@@ -6,6 +6,9 @@ from pg import DB
 from typing import Optional
 import urllib.request as urllib2
 import json
+from prometheus_fastapi_instrumentator import Instrumentator
+
+Instrumentator().instrument(app).expose(app)
 
 
 
