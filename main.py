@@ -59,25 +59,9 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
         response = urllib2.urlopen(http_req)
 
     except:
-        print("POST request to Power BI with data:{0}".format(body))
-        print("PBI ERROR")
+        print("Power BI ERROR")
     return ("received")
 
-
-# @app.get("/test")
-# def test_db_conn():
-#
-#     device_id = "test_device_id"
-#     temp = "25.20"
-#     humid = "31.00"
-#     light = "0.10"
-#     local_received_time = time.time()
-#     table = "raw_data"
-#     conn = psycopg2.connect(dbname=dbname, user=dbuser, password=dbpassword, port=dbport, host=dbhost)
-#     insert_statement = f"""INSERT INTO {table} (device_id,temp,humid,light,local_received_time)
-#                         VALUES ({device_id},{temp},{humid},{light},{local_received_time});
-#                         """
-#     return (conn)
 
 
 if __name__ == "__main__":
