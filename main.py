@@ -8,11 +8,8 @@ import urllib.request as urllib2
 import json
 from prometheus_fastapi_instrumentator import Instrumentator
 
-Instrumentator().instrument(app).expose(app)
-
-
-
 app = fastapi.FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 # connect to DB
 try:
