@@ -7,9 +7,12 @@ from typing import Optional
 import urllib.request as urllib2
 import json
 
-from prometheus_fastapi_instrumentator import Instrumentator
+
 
 app = fastapi.FastAPI()
+
+# Takes two lines in FastAPI to get promtheus monitoring set up
+from prometheus_fastapi_instrumentator import Instrumentator
 Instrumentator().instrument(app).expose(app)
 
 # connect to DB
