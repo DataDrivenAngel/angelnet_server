@@ -1,5 +1,5 @@
-# angelnet_server
-for the iot angelnet project
+# Angel Net Server
+This repository contains the server code for my home IoT sensor network.
 
 ## Power BI Streaming
 
