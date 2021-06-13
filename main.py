@@ -7,8 +7,6 @@ from typing import Optional
 import urllib.request as urllib2
 import json
 
-
-
 app = fastapi.FastAPI()
 
 # Takes two lines in FastAPI to get promtheus monitoring set up
@@ -36,13 +34,13 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
                         VALUES ('{device_id}',{temp},{humid},{light},'{local_received_time}');
                         """
 
-    # Write to PGDB
+    # Write to PG DB
     try:
         db.query(insert_statement)
     except:
         pass
 
-    # Push to Power BI
+    # Push to Power BI if feature flag is True
     if stream_pb = True:
         try:
             payload = f"""
