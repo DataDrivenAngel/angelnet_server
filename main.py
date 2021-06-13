@@ -41,7 +41,7 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
         pass
 
     # Push to Power BI if feature flag is True
-    if stream_pb = True:
+    if stream_pb == True:
         try:
             payload = f"""
                 [{{
