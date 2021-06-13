@@ -1,6 +1,6 @@
 import fastapi
 import uvicorn
-from config import local_ip, dbname, dbuser, dbpassword, dbhost, dbport, streaming_url
+from config import local_ip, dbname, dbuser, dbpassword, dbhost, dbport, streaming_url, stream_pb
 import datetime
 from pg import DB
 from typing import Optional
@@ -43,23 +43,24 @@ def read_data(device_id: str, temp: Optional[float], humid: Optional[float], lig
         pass
 
     # Push to Power BI
-    try:
-        payload = f"""
-            [{{
-                "DateTime" :"{local_received_time}",
-                "Temperature" :{temp},
-                "Humidity" :{humid},
-                "Brightness" :{light},
-                "Device" :"{device_id}"
-            }}]
-            """
+    if stream_pb = True:
+        try:
+            payload = f"""
+                [{{
+                    "DateTime" :"{local_received_time}",
+                    "Temperature" :{temp},
+                    "Humidity" :{humid},
+                    "Brightness" :{light},
+                    "Device" :"{device_id}"
+                }}]
+                """
 
-        body = bytes(payload, encoding='utf-8')
-        http_req = urllib2.Request(streaming_url, body)
-        response = urllib2.urlopen(http_req)
-    except:
-        print("Power BI ERROR")
-    return ("received")
+            body = bytes(payload, encoding='utf-8')
+            http_req = urllib2.Request(streaming_url, body)
+            response = urllib2.urlopen(http_req)
+        except:
+            print("Power BI ERROR")
+        return ("received")
 
 if __name__ == "__main__":
     uvicorn.run(app, host = local_ip, port=8000)
