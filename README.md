@@ -14,7 +14,7 @@ The streamlit dashboard shows data from the Postgres database and can be run loc
 
 ## Sensors
 
-The Raspberry Pi server receives data from three ESP8266 NodeMCU based custom sensor nodes. Each node has a DHT-11 Sensor and photoresister to record temperature, humidity, and light levels. The sensor code can be found here: https://github.com/DataDrivenAngel/angelnet
-
+The Raspberry Pi server receives data from three ESP8266 NodeMCU based custom sensor nodes. Each node has a DHT-11 Sensor and photoresister to record temperature, humidity, and light levels. The sensor code can be found [here.](https://github.com/DataDrivenAngel/angelnet
+)
 
 
