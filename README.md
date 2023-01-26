@@ -8,10 +8,6 @@ The Angel Net server running on the raspberry pi was sending event data to the P
 Example:
 ![Power BI Dashboard](/AngelNetDashboard.gif)
 
-## Dashboard
-
-The streamlit dashboard shows data from the Postgres database and can be run locally.
-
 ## Sensors
 
 The Raspberry Pi server receives data from three ESP8266 NodeMCU based custom sensor nodes. Each node has a DHT-11 Sensor and photoresister to record temperature, humidity, and light levels. The sensor code can be found [at this location.](https://github.com/DataDrivenAngel/angelnet
