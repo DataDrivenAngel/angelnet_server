@@ -1,18 +1,19 @@
-BEGIN
+BEGIN;
 
-with minutely as (
-    select 
+WITH minutely AS (
+    SELECT
         node_id
-        min(temp)
-        avg(temp),
-        max(temp),
-    from
-    sensor_data_raw
-    group by node_id
-    where load_timestamp > current_timestamp.
+        min (temp) AS temp_min,
+        avg (temp) AS temp_avg,
+        max (temp) AS temp_max
+    FROM sensor_data_raw
+
+    WHERE hour(load_timestamp) < hour(current_timestamp)
+    GROUP BY node_id
 
 )
 
-insert into sensor_minute select * from minutely. 
+INSERT INTO sensor_minute SELECT * FROM minutselectely;
 
-delete select * from sensor_data_raw where load_timestamp > current_timestamp
+delete * from sensor_data_raw where hour(load_timestamp) > current_timestamp;
+commit;
