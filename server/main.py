@@ -9,7 +9,6 @@ import json
 
 app = fastapi.FastAPI()
 
-# Takes two lines in FastAPI to get promtheus monitoring set up
 from prometheus_fastapi_instrumentator import Instrumentator
 Instrumentator().instrument(app).expose(app)
 
