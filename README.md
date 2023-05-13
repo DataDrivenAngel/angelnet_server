@@ -10,7 +10,9 @@ Example:
 
 ## Sensors
 
-The Raspberry Pi server receives data from three ESP8266 NodeMCU based custom sensor nodes. Each node has a DHT-11 Sensor and photoresister to record temperature, humidity, and light levels. The sensor code can be found [at this location.](https://github.com/DataDrivenAngel/angelnet
-)
+The Raspberry Pi server receives data from three ESP8266 NodeMCU based custom sensor nodes. Each node has a DHT-11 Sensor and photoresister to record temperature, humidity, and light levels.
 
+## ESP8266 NodeMCU  Sensors
+
+Each board is an ESP8266 NodeMCU with a DHT-11 sensor and a photoresister to measure relative light levels.
 
